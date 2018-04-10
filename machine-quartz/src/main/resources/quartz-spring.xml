@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="  
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd  
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd  
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="schedulerFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
+		<property name="configLocation" value="classpath:quartz-job.properties" />
+		<property name="triggers">
+			<list>
+				<ref bean="trigger_1" />
+				<ref bean="trigger_2" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 定义触发器 -->
+	<bean id="trigger_1"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail_1" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+		<bean id="trigger_2"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail_2" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean>
+	
+	
+	<!-- 定义任务 -->
+	<bean id="jobDetail_1"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.machine.quartz.jobbean.QuartzJobBean_1</value>
+		</property>
+		<property name="durability" value="true" />
+		<property name="requestsRecovery" value="true" />
+	</bean>
+
+	<bean id="jobDetail_2"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass">
+			<value>com.machine.quartz.jobbean.QuartzJobBean_2</value>
+		</property>
+		<property name="durability" value="true" />
+		<property name="requestsRecovery" value="true" />
+	</bean>
+
+</beans>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.machine</groupId>
+		<artifactId>machine</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>machine-activemq</artifactId>
+	<packaging>war</packaging>
+	<name>machine-activemq Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<activemq.version>5.15.2</activemq.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.machine</groupId>
+			<artifactId>machine-utils</artifactId>
+			<version>${global.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>machine-activemq</finalName>
+	</build>
+</project>
