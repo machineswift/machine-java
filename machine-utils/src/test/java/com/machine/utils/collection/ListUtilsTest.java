@@ -35,9 +35,8 @@ public class ListUtilsTest {
     }
 
 
-
     @Test
-    public void testGetDifferent(){
+    public void testGetDifferent() {
         List<String> listA = new ArrayList<>();
         listA.add("6");
         listA.add("4");
@@ -54,14 +53,14 @@ public class ListUtilsTest {
         listB.add("1");
         listB.add("2");
 
-        TwoTuple twoTuple = ListUtils.getDifferent(listA,listB, new Comparator<String>() {
+        TwoTuple twoTuple = ListUtils.getDifferent(listA, listB, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 return o1.toString().compareTo(o2.toString());
             }
         });
 
-        Assert.assertEquals(2,((List)twoTuple.first).size());
-        Assert.assertEquals(2,((List)twoTuple.second).size());
+        Assert.assertEquals(2, ((List) twoTuple.first).size());
+        Assert.assertEquals(2, ((List) twoTuple.second).size());
     }
 }

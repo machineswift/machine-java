@@ -58,11 +58,11 @@ public class ListUtils {
         if ((null == listA || listA.size() == 0) && (null == listB || listB.size() == 0)) {
             return null;
         }
-        if ((null == listA || listA.size() == 0)){
-            return new TwoTuple(null,listB);
+        if ((null == listA || listA.size() == 0)) {
+            return new TwoTuple(null, listB);
         }
         if (null == listB || listB.size() == 0) {
-            return new TwoTuple(listA,null);
+            return new TwoTuple(listA, null);
         }
         /*浅克隆参数,排序不影响参数的顺序*/
         List<T> listATemp = new ArrayList<>(listA);
