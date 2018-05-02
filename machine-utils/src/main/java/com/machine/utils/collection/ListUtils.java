@@ -40,7 +40,7 @@ public class ListUtils {
 
 
     /**
-     * 返回listA与listB里面不相同的数据
+     * 返回listA与listB里面不相同的数据【对应的集合不允许有重复的数据,比较器排序要按照升序排序】
      */
     public static <T> TwoTuple<List<T>, List<T>> getDifferent(List<T> listA,
                                                               List<T> listB,
@@ -49,7 +49,7 @@ public class ListUtils {
     }
 
     /**
-     * 返回listA与listB里面不相同的数据[比较器排序要按照升序排序]
+     * 返回listA与listB里面不相同的数据【对应的集合不允许有重复的数据,比较器排序要按照升序排序】
      */
     public static <T> TwoTuple<List<T>, List<T>> getDifferent(List<T> listA,
                                                               List<T> listB,
@@ -58,7 +58,7 @@ public class ListUtils {
         if ((null == listA || listA.size() == 0) && (null == listB || listB.size() == 0)) {
             return null;
         }
-        if ((null == listA || listA.size() == 0){
+        if ((null == listA || listA.size() == 0)){
             return new TwoTuple(null,listB);
         }
         if (null == listB || listB.size() == 0) {
@@ -102,7 +102,7 @@ public class ListUtils {
                 resultA.add(listATemp.get(indexA));
             }
         }
-        return new TwoTuple(listATemp, listBTemp);
+        return new TwoTuple(resultA, resultB);
     }
 
 }
