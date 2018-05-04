@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Created by yanshan.chen on 2018/4/20.
+ */
 public class ListUtils {
 
     /**
@@ -14,7 +17,7 @@ public class ListUtils {
      */
     public static <T> List<T> getduplicate(List<T> list, Comparator<T> compartor) {
         if (null == list || list.size() <= 1) {
-            return null;
+            return new ArrayList<>(1);
         }
         /*浅克隆参数,排序不影响参数的顺序*/
         List<T> tempList = new ArrayList<>(list);
@@ -56,13 +59,13 @@ public class ListUtils {
                                                               Comparator<T> compartoOrder,
                                                               Comparator<T> compartorEqual) {
         if ((null == listA || listA.size() == 0) && (null == listB || listB.size() == 0)) {
-            return null;
+            return new TwoTuple(new ArrayList<T>(1), new ArrayList<T>(1));
         }
         if ((null == listA || listA.size() == 0)) {
-            return new TwoTuple(null, listB);
+            return new TwoTuple(new ArrayList<T>(1), listB);
         }
         if (null == listB || listB.size() == 0) {
-            return new TwoTuple(listA, null);
+            return new TwoTuple(listA, new ArrayList<T>(1));
         }
         /*浅克隆参数,排序不影响参数的顺序*/
         List<T> listATemp = new ArrayList<>(listA);
@@ -104,5 +107,4 @@ public class ListUtils {
         }
         return new TwoTuple(resultA, resultB);
     }
-
 }
